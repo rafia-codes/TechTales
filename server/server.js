@@ -4,7 +4,7 @@ require('./config/passport');
 const express=require('express');
 const cookieParser=require('cookie-parser');
 const cors=require('cors');
-const blogRouter=require('./routes/blogroutes');
+const blogRouter=require('./routes/blogRoutes');
 const authRouter=require('./routes/authRoutes');
 const oauthRouter=require('./routes/oauthRoutes');
 const profileRouter=require('./routes/profileRoutes');
@@ -28,6 +28,6 @@ app.use("/auth",authRouter);
 app.use("/oauth",oauthRouter);
 app.use("/profile",profileRouter);
 
-app.listen(3200,()=>{
+app.listen(process.env.PORT,()=>{
     console.log("Port running");
 })
