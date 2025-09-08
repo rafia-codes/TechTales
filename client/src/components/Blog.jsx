@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import SingleBlogCompo from "./BlogCompo";
-import axios from "axios";
-import DashBoard from "../Discover Page/DashBoard";
+import SingleBlogCompo from "./BlogCompo.jsx";
+import apiClient from "../apiClient.js";
+import DashBoard from "../Discover Page/DashBoard.jsx";
 
 function Blog() {
   const { id } = useParams();
@@ -11,7 +11,7 @@ function Blog() {
   useEffect(() => {
     const getBlog = async () => {
       try {
-        const res = await axios.get(`http://localhost:3200/blogs/${id}`);
+        const res = await apiClient.get(`/blogs/${id}`);
         if (res.status === 201) {
           setBlog(res.data.blog);
         }

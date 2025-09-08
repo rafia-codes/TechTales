@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
-import { useAuthModel } from "../Auth/AuthModal";
-import Navbar from "../components/NavBar";
-import useAuthCheck from "../hooks/useAuthCheck";
+import { useAuthModel } from "../Auth/AuthModal.jsx";
+import Navbar from "../components/NavBar.jsx";
+import useAuthCheck from "../hooks/useAuthCheck.js";
 import { useEffect } from "react";
-import axios from "axios";
+import apiClient from "../apiClient.js";
 
 export default function Home() {
   const { openSignup } = useAuthModel();
@@ -11,7 +11,7 @@ export default function Home() {
   useEffect(() => {
     const refresh = async () => {
       try {
-        const res=await axios.get('http://localhost:3200/auth/refresh');
+        const res=await apiClient.get('/auth/refresh');
       } catch (error) {
         console.log(error);
       }

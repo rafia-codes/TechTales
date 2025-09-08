@@ -1,7 +1,7 @@
 import { useState } from "react";
-import axios from "axios";
-import { useOtpModal } from "./OtpModal";
-import { usePassModal } from "./PasswordModal";
+import apiClient from "../apiClient.js";
+import { useOtpModal } from "./OtpModal.jsx";
+import { usePassModal } from "./PasswordModal.jsx";
 
 const Otp = ({ email }) => {
   const { closeModal } = useOtpModal();
@@ -12,11 +12,7 @@ const Otp = ({ email }) => {
   const handleOtp = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post(
-        "http://localhost:3200/auth/verify-otp",
-        { email, otp },
-        { withCredentials: true }
-      );
+      const res = await apiClient.post('/auth/verify-otp', { email, otp });
       console.log(res);
       if (res.status === 200) {
         setError("");

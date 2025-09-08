@@ -1,7 +1,7 @@
 import { useState } from "react";
-import DashBoard from "./DashBoard";
+import DashBoard from "./DashBoard.jsx";
 import { useNavigate } from "react-router";
-import axios from "axios"
+import apiClient from "../apiClient.js";
 
 export default function CreateBlogForm() {
   const navigate = useNavigate();
@@ -21,15 +21,9 @@ export default function CreateBlogForm() {
   };
 
   const handleSubmit = async (e) => {
-    console.log("clicked hua h");
     e.preventDefault();
     try {
-        const res = await axios.post(
-      "http://localhost:3200/blogs",
-      formData,
-      {
-        withCredentials: true,
-      });
+        const res = await apiClient.post("/blogs",formData);
       if (res.status==201) {
       alert("Blog created successfully!");
       setTimeout(() => {

@@ -1,8 +1,8 @@
-import axios from "axios";
+import apiClient from "../apiClient.js";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import { FaInstagram, FaGithub, FaYoutube, FaTwitter } from "react-icons/fa";
-import DashBoard from "../Discover Page/DashBoard";
+import DashBoard from "../Discover Page/DashBoard.jsx";
 
 function Profile() {
   const { id } = useParams();
@@ -13,7 +13,7 @@ function Profile() {
   useEffect(() => {
     const getUser = async () => {
       try {
-        const res = await axios.get(`http://localhost:3200/profile/${id}`);
+        const res = await apiClient.get(`/profile/${id}`);
         setUser(res.data.user);
       } catch (err) {
         console.error("Error fetching user:", err);

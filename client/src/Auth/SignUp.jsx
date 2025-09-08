@@ -1,8 +1,8 @@
 import { useState } from "react";
-import InputBox from "../components/InputBox";
-import axios from "axios";
+import InputBox from "../components/InputBox.jsx";
+import apiClient from "../apiClient.js";
 import { useNavigate } from "react-router";
-import { useAuthModel } from "./AuthModal";
+import { useAuthModel } from "./AuthModal.jsx";
 
 export default function SignUpPage({ CloseonClick, toLogin }) {
   const { closeAll } = useAuthModel();
@@ -18,13 +18,7 @@ export default function SignUpPage({ CloseonClick, toLogin }) {
   const handlelogin = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post(
-        "http://localhost:3200/auth/register",
-        formData,
-        {
-          withCredentials: true,
-        }
-      );
+      const res = await apiClient.post("/auth/register",formData);
       if (res.status == 200) {
         closeAll();
         navigate("/discover");
@@ -35,7 +29,7 @@ export default function SignUpPage({ CloseonClick, toLogin }) {
   };
 
    const handleoauth=(provider)=>{
-    window.location.href= `http://localhost:3200/oauth/${provider}`;
+    window.location.href= `/oauth/${provider}`;
   };
 
   return (

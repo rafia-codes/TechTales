@@ -1,6 +1,6 @@
 import { useState } from "react";
-import axios from "axios";
-import { usePassModal } from "./PasswordModal";
+import apiClient from "../apiClient.js";
+import { usePassModal } from "./PasswordModal.jsx";
 
 const ResetPassword = ({ email }) => {
   const { deactivate } = usePassModal();
@@ -18,11 +18,7 @@ const ResetPassword = ({ email }) => {
     }
 
     try {
-      const res = await axios.post(
-        "http://localhost:3200/auth/reset-password",
-        { email:email, newPass, confPass },
-        { withCredentials: true }
-      );
+      const res = await apiClient.post("/auth/reset-password",{ email:email, newPass, confPass });
       if (res.status === 200) {
         setError("");
         setSuccess("Password updated successfully!");

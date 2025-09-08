@@ -9,8 +9,8 @@ router.get('/github',passport.authenticate('github', { scope: ['user:email'] }))
 router.get('/discord',passport.authenticate('discord', { scope: ['identify','email'] }));
 
 router.get('/google/callback',passport.authenticate('google', { session: false }),(req,res)=>oauthController.oauthsuccess(req,res));
-router.get('/facebook/callback',passport.authenticate('facebook', { session: false }),(req,res)=>oauthController.oauthsuccess(req,res));
-router.get('/github/callback',passport.authenticate('github', { session: false }),(req,res)=>oauthController.oauthsuccess(req,res));
-router.get('/discord/callback',passport.authenticate('discord', { session: false }),(req,res)=>oauthController.oauthsuccess(req,res));
+// router.get('/facebook/callback',passport.authenticate('facebook', { session: false }),(req,res)=>oauthController.oauthsuccess(req,res));
+// router.get('/github/callback',passport.authenticate('github', { session: false }),(req,res)=>oauthController.oauthsuccess(req,res));
+// router.get('/discord/callback',passport.authenticate('discord', { session: false }),(req,res)=>oauthController.oauthsuccess(req,res));
 
 module.exports=router;

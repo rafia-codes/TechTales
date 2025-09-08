@@ -1,4 +1,4 @@
-import Otpcomp from './Otp';
+import Otpcomp from './Otp.jsx';
 import {useContext,createContext,useState} from 'react';
 
 const OtpModalContext=createContext();

@@ -1,6 +1,6 @@
-import DashBoard from "./DashBoard";
-import Card from "../components/Cards";
-import axios from 'axios'
+import DashBoard from "./DashBoard.jsx";
+import Card from "../components/Cards.jsx";
+import apiClient from "../apiClient.js";
 import { useEffect } from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router";
@@ -12,7 +12,7 @@ function Discover() {
   useEffect(()=>{
     const getBlogs=async()=>{
       try {
-        const res=await axios.get('http://localhost:3200/blogs/all');
+        const res=await apiClient.get('/blogs/all');
         setBlogs(res.data.blogs);
       } catch (error) {
         console.log(error.message);

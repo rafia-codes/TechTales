@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router";
-import { useAuthModel } from "../../Auth/AuthModal";
+import { useAuthModel } from "../../Auth/AuthModal.jsx";
 
 function profilebtn() {
   const { openLogin } = useAuthModel();

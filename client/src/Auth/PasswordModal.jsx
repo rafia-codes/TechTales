@@ -1,5 +1,5 @@
 import { createContext,useContext,useState  } from "react";
-import PassModal from "./PassModal"
+import PassModal from "./PassModal.jsx"
 
 const PassContext=createContext();
 

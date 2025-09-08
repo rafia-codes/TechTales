@@ -16,7 +16,7 @@ const app=express();
 connectdb().then(()=>console.log(`connected to DB`));
 
 app.use(cors({
-    origin:"http://localhost:5173",
+    origin:"https://techtalesapp.netlify.app",
     credentials:true
 }));
 app.use(express.json());

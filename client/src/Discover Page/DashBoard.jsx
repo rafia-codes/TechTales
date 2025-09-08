@@ -1,10 +1,7 @@
-import { useAuthModel } from '../Auth/AuthModal';
-import useAuthCheck from '../hooks/useAuthCheck';
-import SearchBar from './DashBoard/SearchBar';
-import ProfileBtn from './DashBoard/profilebtn';
-import ThemeBtn from './DashBoard/themebtn';
-import { useNavigate } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import useAuthCheck from '../hooks/useAuthCheck.js';
+import SearchBar from './DashBoard/SearchBar.jsx';
+import ProfileBtn from './DashBoard/profilebtn.jsx';
+import ThemeBtn from './DashBoard/themebtn.jsx';
 
 export default function DashBoard() {
   

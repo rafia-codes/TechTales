@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
-import axios from "axios";
-import DashBoard from "./DashBoard";
+import apiClient from "../apiClient.js";
+import DashBoard from "./DashBoard.jsx";
 import { useNavigate, useParams } from "react-router";
 
 export default function EditBlogForm() {
@@ -9,10 +9,9 @@ export default function EditBlogForm() {
   const [blog, setBlog] = useState(null); // Initially null until loaded
 
   useEffect(() => {
-    console.log(id);
     const getBlog = async () => {
       try {
-        const res = await axios.get(`http://localhost:3200/blogs/${id}`);
+        const res = await apiClient.get(`/blogs/${id}`);
         if (res.status === 201) {
           setBlog(res.data.blog);
         }
@@ -34,11 +33,7 @@ export default function EditBlogForm() {
   const handleUpdate = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.put(
-        `http://localhost:3200/blogs/${blog._id}`,
-        blog,
-        { withCredentials: true }
-      );
+      const res = await apiClient.put(`/blogs/${blog._id}`,blog);
 
       if (res.status === 201) {
         alert("Blog updated successfully!");

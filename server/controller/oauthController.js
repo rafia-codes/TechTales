@@ -5,6 +5,6 @@ module.exports.oauthsuccess=async(req,res)=>{
         res.status(401).json({message:"Authentication failed"});
     const {accesstoken,refreshtoken}=generateTokens(req.user);
     setAuthCookies(res,accesstoken,refreshtoken);
-    res.redirect('http://localhost:5173/discover');
+    res.redirect('https://techtalesapp.netlify.app/discover');
 };
 

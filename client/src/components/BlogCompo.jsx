@@ -1,6 +1,6 @@
 import { Calendar, Eye, ThumbsUp, ThumbsDown, Bookmark, User, PencilLine } from "lucide-react";
 import { useNavigate } from "react-router";
-import axios from "axios"
+import apiClient from "../apiClient";
 import { useSelector } from "react-redux";
 
 export default function BlogCompo({ blog }) {
@@ -9,9 +9,7 @@ export default function BlogCompo({ blog }) {
 
   const handledelete=async()=>{
     try {
-     const res=await axios.delete(`http://localhost:3200/blogs/${blog._id}`,{
-      withCredentials:true
-     });
+     const res=await apiClient.delete(`/blogs/${blog._id}`);
     if(res.status==201){
       setTimeout(()=>{
         navigate('/discover');
@@ -51,9 +49,9 @@ export default function BlogCompo({ blog }) {
           <span className="cursor-pointer px-3 py-1 text-xs bg-amber-400 text-white rounded-full" onClick={()=>handleEdit()}>
             <PencilLine />
           </span>
-          <span className="px-3 py-1 text-xs bg-green-600/80 text-white rounded-full">
+         { user?._id==blog.author?._id && (<span className="px-3 py-1 text-xs bg-green-600/80 text-white rounded-full">
             {blog.readingtime || "3 min read"}
-          </span>
+          </span>)}
           {user?._id==blog.author?._id && (
             <span className="cursor-pointer px-3 py-1 text-xs bg-red-600/80 text-white rounded-full" onClick={()=>handledelete()}>
             Delete

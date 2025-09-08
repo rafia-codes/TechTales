@@ -41,8 +41,6 @@ module.exports.loginUser = async (req, res, next) => {
   if (!user) {
     return res.status(400).json("User doesn't exist");
   }
-  console.log("Type of input password:", typeof password, password);
-  console.log("Type of stored hash:", typeof user.password, user.password);
 
   const match = await bcrypt.compare(password, user.password);
   if (!match) {

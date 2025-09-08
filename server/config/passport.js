@@ -27,7 +27,7 @@ async function findOrCreateUser(profile,provider){
 passport.use(new GoogleStrategy({
     clientID: process.env.GOOGLE_CLIENT_ID,
     clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-    callbackURL: "http://localhost:3200/oauth/google/callback"
+    callbackURL: "https://techtalesapp.netlify.app/oauth/google/callback"
 },
 async function(accessToken, refreshToken, profile, cb) {
     const user=await findOrCreateUser(profile,"google");
@@ -35,37 +35,37 @@ async function(accessToken, refreshToken, profile, cb) {
   }
 ));
 
-passport.use(new FacebookStrategy({
-    clientID: process.env.FACEBOOK_APP_ID,
-    clientSecret: process.env.FACEBOOK_SECRET,
-    callbackURL: "http://localhost:3200/oauth/google/callback",
-    profileFields: ['id', 'emails', 'name', 'displayName', 'photos']
-},
-async function(accessToken, refreshToken, profile, cb) {
-    const user=await findOrCreateUser(profile,"facebook");
-    return cb(null,user);
-  })
-);
+// passport.use(new FacebookStrategy({
+//     clientID: process.env.FACEBOOK_APP_ID,
+//     clientSecret: process.env.FACEBOOK_SECRET,
+//     callbackURL: "http://localhost:3200/oauth/google/callback",
+//     profileFields: ['id', 'emails', 'name', 'displayName', 'photos']
+// },
+// async function(accessToken, refreshToken, profile, cb) {
+//     const user=await findOrCreateUser(profile,"facebook");
+//     return cb(null,user);
+//   })
+// );
 
-passport.use(new DiscordStrategy({
-    clientID: process.env.Discord_APP_ID,
-    clientSecret: process.env.Discord_SECRET,
-    callbackURL: "http://localhost:3200/oauth/discord/callback",
-    scope: ['identify', 'email'],
-},
-async function(accessToken, refreshToken, profile, cb) {
-    const user=await findOrCreateUser(profile,"discord");
-    return cb(null,user);
-  })
-);
+// passport.use(new DiscordStrategy({
+//     clientID: process.env.Discord_APP_ID,
+//     clientSecret: process.env.Discord_SECRET,
+//     callbackURL: "http://localhost:3200/oauth/discord/callback",
+//     scope: ['identify', 'email'],
+// },
+// async function(accessToken, refreshToken, profile, cb) {
+//     const user=await findOrCreateUser(profile,"discord");
+//     return cb(null,user);
+//   })
+// );
 
-passport.use(new GitHubStrategy({
-    clientID: process.env.GITHUB_APP_ID,
-    clientSecret: process.env.GITHUB_SECRET,
-    callbackURL: "http://localhost:3200/oauth/github/callback"
-},
-async function(accessToken, refreshToken, profile, cb) {
-    const user=await findOrCreateUser(profile,"github");
-    return cb(null,user);
-  })
-);
+// passport.use(new GitHubStrategy({
+//     clientID: process.env.GITHUB_APP_ID,
+//     clientSecret: process.env.GITHUB_SECRET,
+//     callbackURL: "http://localhost:3200/oauth/github/callback"
+// },
+// async function(accessToken, refreshToken, profile, cb) {
+//     const user=await findOrCreateUser(profile,"github");
+//     return cb(null,user);
+//   })
+// );

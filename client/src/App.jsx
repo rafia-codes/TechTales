@@ -1,17 +1,17 @@
 import "./App.css";
-import {useAuthModel} from './Auth/AuthModal'
-import Discover from "./Discover Page/Discover";
-import Landing from "./Landing Page/Landing";
-import SignIn from "./Auth/SignIn";
-import SignUp from "./Auth/SignUp";
-import Profile from "./components/Profile"
+import {useAuthModel} from './Auth/AuthModal.jsx'
+import Discover from "./Discover Page/Discover.jsx";
+import Landing from "./Landing Page/Landing.jsx";
+import SignIn from "./Auth/SignIn.jsx";
+import SignUp from "./Auth/SignUp.jsx";
+import Profile from "./components/Profile.jsx"
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import store from "./redux/store";
 import { Provider } from "react-redux";
-import AuthInitialize from "./components/AuthInitialize";
-import Blog from "./components/Blog";
-import BlogPost from "./Discover Page/BlogPost"
-import EditBlog from "./Discover Page/EditBlog"
+import AuthInitialize from "./components/AuthInitialize.jsx";
+import Blog from "./components/Blog.jsx";
+import BlogPost from "./Discover Page/BlogPost.jsx"
+import EditBlog from "./Discover Page/EditBlog.jsx"
 
 function App() {
   const { showLogin, showSignup, openLogin, openSignup, closeAll } =useAuthModel();

@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import InputBox from "../components/InputBox";
-import axios from "axios";
-import { useAuthModel } from "./AuthModal";
+import InputBox from "../components/InputBox.jsx";
+import apiClient from "../apiClient.js";
+import { useAuthModel } from "./AuthModal.jsx";
 import { useDispatch } from "react-redux";
-import { loginSucc } from "../redux/authSlice";
-import { useOtpModal } from "./OtpModal";
+import { loginSucc } from "../redux/authSlice.js";
+import { useOtpModal } from "./OtpModal.jsx";
 
 export default function SignIn({ close, openSign }) {
   const { closeAll } = useAuthModel();
@@ -28,13 +28,7 @@ export default function SignIn({ close, openSign }) {
   const handlelogin = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post(
-        "http://localhost:3200/auth/login",
-        formData,
-        {
-          withCredentials: true,
-        }
-      );
+      const res = await apiClient.post("/auth/login",formData);
       if (res.status == 200) {
         closeAll();
         navigate("/discover");
@@ -47,19 +41,10 @@ export default function SignIn({ close, openSign }) {
 
   const handleForgotPass = async (e) => {
     e.preventDefault();
-    console.log("clicked hu");
     try {
-      const res = await axios.post(
-        "http://localhost:3200/auth/request-reset",
-        formData,
-        {
-          withCredentials: true,
-        }
-      );
+      const res = await apiClient.post("/auth/request-reset",formData);
       console.log(typeof res.status);
       if (res.status == 200) {
-        console.log("inside if, about to call showModal");
-        console.log("showModal:", showModal);
         showModal(formData.emailOrUsername);
       }
     } catch (error) {
@@ -73,7 +58,7 @@ export default function SignIn({ close, openSign }) {
   };
 
   const handleoauth = (provider) => {
-    window.location.href = `http://localhost:3200/oauth/${provider}`;
+    window.location.href = `/oauth/${provider}`;
   };
 
   return (

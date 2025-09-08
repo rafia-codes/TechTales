@@ -1,4 +1,4 @@
-import useAuthCheck from '../hooks/useAuthCheck'
+import useAuthCheck from '../hooks/useAuthCheck.js'
 
 function AuthInitialize() {
     useAuthCheck();
