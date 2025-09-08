@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const apiClient = axios.create({
-  baseURL: '', // your backend URL
+  baseURL: 'https://techtales-1-ez4f.onrender.com/', // your backend URL
   withCredentials: true, // ✅ send cookies
 });
 
