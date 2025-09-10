@@ -8,7 +8,6 @@ export const OtpModalProvider=({children})=>{
     const [email,setEmail]=useState("");
 
     const showModal=(emailval)=>{
-        console.log(emailval);
         if(emailval){
             setEmail(emailval);
             setShowOtp(true);
@@ -23,7 +22,6 @@ export const OtpModalProvider=({children})=>{
         <OtpModalContext.Provider value={{email,showModal,closeModal}}>
             {children}
             {showOtp && <>
-            {console.log("ab toh render hoja")}
             <Otpcomp email={email}/></>}
         </OtpModalContext.Provider>
     )
