@@ -29,7 +29,7 @@ export default function SignUpPage({ CloseonClick, toLogin }) {
   };
 
    const handleoauth=(provider)=>{
-    window.location.href= `/oauth/${provider}`;
+    window.location.href = `https://techtales-1-ez4f.onrender.com/oauth/${provider}`;
   };
 
   return (
