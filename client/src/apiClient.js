@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const apiClient = axios.create({
-  baseURL: 'https://techtales-1-ez4f.onrender.com/', 
+  baseURL: 'https://techtales-g9wi.onrender.com/', 
   withCredentials: true,
 });
 
