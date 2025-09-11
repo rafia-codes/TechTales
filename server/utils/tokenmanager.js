@@ -18,11 +18,15 @@ function generateTokens(user, rememberMe=false) {
 function setAuthCookies(res, accesstoken, refreshtoken, rememberMe=false) {
     res.cookie('accesstoken', accesstoken, {
         httpOnly: true,
+        sameSite:'none',
+        secure: true,
         maxAge: 60 * 60 * 1000, 
     });
 
     res.cookie('refreshtoken', refreshtoken, {
         httpOnly: true,
+        sameSite:'none',
+        secure: true,
         maxAge: (rememberMe)? 30 * 24 * 60 * 60 * 1000:7 * 24 * 60 * 60 * 1000, 
     });
 }
